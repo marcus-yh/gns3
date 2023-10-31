@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  gns3-server:
+    environment:
+      - .env
+    image: ${IMAGE_NAME}
+    privileged: true
+    container_name: ${SERVICE_NAME}
+    working_dir: ${WORKDIR}
+    hostname: ${SERVICE_NAME}
+    ports:
+      - 8080:80
+      #- 3080:3080
+      #- 3080:3080/udp
+      #- 2222:22
+    network_mode: host
+    volumes:
+      - ./data:${WORKDIR}

@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  server:
+    build:
+      dockerfile: ./Dockerfile
+    environment:
+      - .env
+    privileged: true
+    image: ${IMAGE_NAME}
+    container_name: ${SERVICE_NAME}
+    #volumes:
+    #  - ../..:${WORKDIR}
+    working_dir: ${WORKDIR}
+    hostname: ${SERVICE_NAME}
+    #user: ${USER_ID}:${GROUP_ID}
+    ports:
+      - 3080:3080
+      - 3080:3080/udp
+      - 2222:22
